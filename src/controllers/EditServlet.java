@@ -37,6 +37,8 @@ public class EditServlet extends HttpServlet {
             // 該当のIDのタスク1件のみをデータベースから取得
             Task t = em.find(Task.class, Integer.parseInt(request.getParameter("id")));
 
+            em.close();
+
             // タスク情報とセッションIDをリクエストスコープに登録
             request.setAttribute("task", t);
             request.setAttribute("_token", request.getSession().getId());
